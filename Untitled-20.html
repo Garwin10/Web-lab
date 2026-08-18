@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Rental Service</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:Arial;
+    background:#f5f5f5;
+    color:#333;
+}
+
+header{
+    background:#333;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+nav{
+    background:#222;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    padding:15px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:8px 15px;
+}
+
+nav a:hover{background:#555}
+
+section{padding:40px 20px}
+
+.hero{text-align:center}
+
+.hero img{
+    width:100%;
+    max-width:900px;
+    height:auto;
+    margin-top:20px;
+    border-radius:10px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#333;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+h2{text-align:center;margin-bottom:20px}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+article{
+    flex:1 1 300px;
+    max-width:350px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 3px 10px #ccc;
+}
+
+article img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+article h3{margin:10px 0}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th,td{
+    padding:12px;
+    border:1px solid #ccc;
+    text-align:left;
+}
+
+th{background:#333;color:white}
+
+.form-container{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+}
+
+fieldset{
+    padding:20px;
+    margin-bottom:20px;
+}
+
+label{font-weight:bold}
+
+input,select,textarea{
+    width:100%;
+    padding:10px;
+    margin:5px 0 15px;
+}
+
+input[type=radio],
+input[type=checkbox]{
+    width:auto;
+}
+
+input[type=submit],input[type=reset]{
+    background:#333;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    margin:5px;
+    cursor:pointer;
+}
+
+.form-actions{text-align:center}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+@media screen and (max-width:768px){
+    nav{flex-direction:column;align-items:center}
+    .cards{flex-direction:column;align-items:center}
+    article{max-width:100%}
+    .btn,input[type=submit],input[type=reset]{width:100%}
+}
+
+@media screen and (max-width:480px){
+    header h1{font-size:25px}
+    nav a{width:100%;text-align:center}
+}
+</style>
+</head>
+
+<body>
+
+<header id="home">
+<h1>Car Rental Service</h1>
+<p>Rent a Car • Drive Anywhere • Travel Comfortably</p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#cars">Cars</a>
+<a href="#plans">Rental Plans</a>
+<a href="#booking">Booking</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<section class="hero">
+<h2>Welcome to Our Car Rental Service</h2>
+<p>Choose your favourite car and enjoy a safe, comfortable and affordable journey.</p>
+<a href="#booking" class="btn">Book a Car</a>
+<br><br>
+<img src="https://images.unsplash.com/photo-1502877338535-766e1452684a" alt="Rental Car">
+</section>
+
+<section id="about">
+<h2>About Our Service</h2>
+<p>
+Our Car Rental Service provides reliable and affordable cars for customers.
+We offer different types of vehicles for personal trips, business travel and family journeys.
+</p>
+</section>
+
+<section id="cars">
+<h2>Our Cars</h2>
+
+<div class="cards">
+
+<article>
+<img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2" alt="Sedan">
+<h3>Sedan</h3>
+<p>Comfortable cars suitable for city and long-distance travel.</p>
+</article>
+
+<article>
+<img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b" alt="SUV">
+<h3>SUV</h3>
+<p>Spacious vehicles suitable for family trips and adventures.</p>
+</article>
+
+<article>
+<img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7" alt="Luxury Car">
+<h3>Luxury Car</h3>
+<p>Premium cars for comfortable and stylish journeys.</p>
+</article>
+
+</div>
+</section>
+
+<section id="plans">
+<h2>Rental Plans</h2>
+
+<table>
+<tr>
+<th>Car Type</th>
+<th>Price Per Day</th>
+<th>Seating</th>
+<th>Fuel</th>
+</tr>
+
+<tr>
+<td>Sedan</td>
+<td>₹1500</td>
+<td>5</td>
+<td>Petrol</td>
+</tr>
+
+<tr>
+<td>SUV</td>
+<td>₹2500</td>
+<td>7</td>
+<td>Diesel</td>
+</tr>
+
+<tr>
+<td>Luxury Car</td>
+<td>₹4000</td>
+<td>5</td>
+<td>Petrol</td>
+</tr>
+</table>
+</section>
+
+<section>
+<h2>Rental Process</h2>
+
+<ol>
+<li>Choose a Car</li>
+<li>Select Rental Duration</li>
+<li>Enter Customer Details</li>
+<li>Confirm Booking</li>
+<li>Collect the Car</li>
+</ol>
+</section>
+
+<section>
+<h2>Our Services</h2>
+
+<ul>
+<li>Daily Car Rental</li>
+<li>Weekly Car Rental</li>
+<li>Airport Pickup</li>
+<li>Family Travel</li>
+<li>Business Travel</li>
+</ul>
+</section>
+
+<section id="booking">
+<h2>Car Booking Form</h2>
+
+<div class="form-container">
+
+<form>
+
+<fieldset>
+<legend>Personal Information</legend>
+
+<label>Full Name</label>
+<input type="text" placeholder="Enter your name" required>
+
+<label>Email</label>
+<input type="email" placeholder="example@gmail.com" required>
+
+<label>Mobile Number</label>
+<input type="tel" pattern="[0-9]{10}" placeholder="Enter 10-digit number" required>
+
+<label>Date of Birth</label>
+<input type="date">
+
+<label>Gender</label><br>
+<input type="radio" name="gender"> Male
+<input type="radio" name="gender"> Female
+<input type="radio" name="gender"> Other
+
+</fieldset>
+
+<fieldset>
+<legend>Rental Details</legend>
+
+<label>Select Car</label>
+<select>
+<option>-- Select Car --</option>
+<option>Sedan</option>
+<option>SUV</option>
+<option>Luxury Car</option>
+</select>
+
+<label>Rental Date</label>
+<input type="date" required>
+
+<label>Return Date</label>
+<input type="date" required>
+
+<label>Additional Services</label><br>
+<input type="checkbox"> GPS
+<input type="checkbox"> Child Seat
+<input type="checkbox"> Driver
+
+<br><br>
+
+<label>Pickup Location</label>
+<textarea rows="3" placeholder="Enter pickup location"></textarea>
+
+</fieldset>
+
+<div class="form-actions">
+<input type="submit" value="Book Now">
+<input type="reset" value="Reset">
+</div>
+
+</form>
+</div>
+</section>
+
+<footer id="contact">
+<p><strong>Car Rental Service</strong></p>
+<p>Contact: carrental@example.com</p>
+<p>Phone: 9876543210</p>
+<p>&copy; 2026 Car Rental Service. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
