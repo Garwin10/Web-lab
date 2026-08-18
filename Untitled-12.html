@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Rental Service</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f2f2f2;
+            margin:0;
+            padding:30px;
+        }
+
+        .container{
+            width:450px;
+            margin:auto;
+            background:white;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+        }
+
+        h2{
+            text-align:center;
+            color:#003366;
+        }
+
+        label{
+            font-weight:bold;
+        }
+
+        input, select, textarea{
+            width:100%;
+            padding:8px;
+            margin-top:5px;
+            margin-bottom:15px;
+            border:1px solid #ccc;
+            border-radius:5px;
+            box-sizing:border-box;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"]{
+            width:auto;
+        }
+
+        input[type="color"],
+        input[type="range"],
+        input[type="file"]{
+            width:100%;
+        }
+
+        input[type="submit"]{
+            background:#007BFF;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+
+        input[type="submit"]:hover{
+            background:#0056b3;
+        }
+
+        input[type="reset"]{
+            background:#dc3545;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+
+        input[type="reset"]:hover{
+            background:#b52b38;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🚗 Car Rental Service Booking Form</h2>
+
+<form>
+
+<label>Customer Name:</label>
+<input type="text" name="name" required>
+
+<label>Email:</label>
+<input type="email" name="email" required>
+
+<label>Phone Number:</label>
+<input type="text" pattern="[0-9]{10}" required>
+
+<label>Age:</label>
+<input type="number" min="18" max="70" required>
+
+<label>Pick-up Date:</label>
+<input type="date" required>
+
+<label>Return Date:</label>
+<input type="date" required>
+
+<label>Car Type:</label>
+<select required>
+    <option>Select Car</option>
+    <option>Sedan</option>
+    <option>SUV</option>
+    <option>Hatchback</option>
+    <option>Luxury</option>
+</select>
+
+<label>Fuel Type:</label><br>
+<input type="radio" name="fuel"> Petrol
+<input type="radio" name="fuel"> Diesel
+<input type="radio" name="fuel"> Electric
+<br><br>
+
+<label>Extra Services:</label><br>
+<input type="checkbox"> GPS
+<input type="checkbox"> Child Seat
+<input type="checkbox"> Driver
+<br><br>
+
+<label>Pickup Address:</label>
+<textarea rows="4"></textarea>
+
+<label>Upload Driving License:</label>
+<input type="file">
+
+<label>Choose Car Color:</label>
+<input type="color">
+
+<label>Rental Duration (Days):</label>
+<input type="range" min="1" max="30">
+
+<input type="submit" value="Book Now">
+<input type="reset" value="Clear">
+
+</form>
+
+</div>
+
+</body>
+</html>
