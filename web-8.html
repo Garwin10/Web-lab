@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html ng-app="carRentalApp">
+<head>
+    <title>Car Rental Service - AngularJS</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #edf3f8;
+            margin: 20px;
+        }
+
+        h1 {
+            background-color: #123456;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        h2 {
+            color: #123456;
+        }
+
+        .box {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input, select, textarea {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            background-color: #2874a6;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #123456;
+        }
+
+        li {
+            padding: 8px;
+        }
+
+        .delete {
+            background-color: red;
+            margin-left: 15px;
+        }
+
+        .delete:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>CAR RENTAL SERVICE</h1>
+
+<center>
+    <p>Drive Your Journey | Choose Your Car | Enjoy Your Ride</p>
+</center>
+
+<!-- 1. COMMENT BOX -->
+
+<div class="box" ng-controller="CommentController">
+
+    <h2>1. Customer Feedback Box</h2>
+
+    <h3>Post Your Comment</h3>
+
+    <textarea ng-model="txtcomment"
+        placeholder="Enter your feedback"
+        rows="4" cols="50"></textarea>
+
+    <br><br>
+
+    <button ng-click="addComment()">Post Comment</button>
+
+    <h3>Customer Comments</h3>
+
+    <ul>
+        <li ng-repeat="c in comments track by $index">
+            {{c}}
+
+            <button class="delete"
+                ng-click="removeComment($index)">
+                Delete
+            </button>
+        </li>
+    </ul>
+
+</div>
+
+
+<!-- 2. CALCULATOR -->
+
+<div class="box" ng-controller="CalculatorController">
+
+    <h2>2. Car Rental Cost Calculator</h2>
+
+    <p>Enter Rental Amount Per Day:</p>
+
+    <input type="number" ng-model="a"
+        placeholder="Amount per day">
+
+    <p>Enter Number of Rental Days:</p>
+
+    <input type="number" ng-model="b"
+        placeholder="Number of days">
+
+    <p>Select Operation:</p>
+
+    <select ng-model="operator">
+        <option value="+">Addition (+)</option>
+        <option value="-">Subtraction (-)</option>
+        <option value="*">Multiplication (*)</option>
+        <option value="/">Division (/)</option>
+    </select>
+
+    <h3>Total Rental Cost: {{calculate()}}</h3>
+
+</div>
+
+
+<!-- 3. TO-DO LIST -->
+
+<div class="box" ng-controller="TodoController">
+
+    <h2>3. Car Rental Task Management</h2>
+
+    <p>Enter a Rental Activity:</p>
+
+    <input type="text"
+        ng-model="title"
+        placeholder="Enter rental activity">
+
+    <button ng-click="add()">Add</button>
+
+    <h3>Rental Activities</h3>
+
+    <ul>
+        <li ng-repeat="t in tasks track by $index">
+            {{t}}
+
+            <button class="delete"
+                ng-click="remove($index)">
+                Delete
+            </button>
+        </li>
+    </ul>
+
+</div>
+
+
+<script>
+
+// MAIN ANGULARJS APPLICATION
+
+var app = angular.module("carRentalApp", []);
+
+
+// COMMENT BOX CONTROLLER
+
+app.controller("CommentController", function($scope) {
+
+    $scope.comments = [];
+
+    $scope.addComment = function() {
+
+        if($scope.txtcomment) {
+
+            $scope.comments.push($scope.txtcomment);
+
+            $scope.txtcomment = "";
+
+        }
+
+    };
+
+    $scope.removeComment = function(index) {
+
+        $scope.comments.splice(index, 1);
+
+    };
+
+});
+
+
+// CALCULATOR CONTROLLER
+
+app.controller("CalculatorController", function($scope) {
+
+    $scope.calculate = function() {
+
+        if($scope.a === undefined ||
+           $scope.b === undefined ||
+           !$scope.operator) {
+
+            return 0;
+
+        }
+
+        if($scope.operator == "+") {
+            return $scope.a + $scope.b;
+        }
+
+        if($scope.operator == "-") {
+            return $scope.a - $scope.b;
+        }
+
+        if($scope.operator == "*") {
+            return $scope.a * $scope.b;
+        }
+
+        if($scope.operator == "/") {
+
+            if($scope.b == 0) {
+                return "Cannot divide by zero";
+            }
+
+            return $scope.a / $scope.b;
+        }
+
+    };
+
+});
+
+
+// TODO LIST CONTROLLER
+
+app.controller("TodoController", function($scope) {
+
+    $scope.tasks = [
+        "Book a Car",
+        "Verify Driving Licence"
+    ];
+
+    $scope.add = function() {
+
+        if($scope.title) {
+
+            $scope.tasks.push($scope.title);
+
+            $scope.title = "";
+
+        }
+
+    };
+
+    $scope.remove = function(index) {
+
+        $scope.tasks.splice(index, 1);
+
+    };
+
+});
+
+</script>
+
+</body>
+</html>
