@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Car Rental Service</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #142d4e;
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    width: 85%;
+    margin: 25px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+h2 {
+    color: #142d4e;
+}
+
+.cars {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.car {
+    width: 250px;
+    padding: 15px;
+    background: #f5f7fa;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.car img {
+    width: 220px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+input, select {
+    padding: 10px;
+    margin: 8px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #142d4e;
+    color: white;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e67e22;
+}
+
+#bill {
+    background-color: #eaf2f8;
+    padding: 20px;
+    margin: 20px auto;
+    width: 70%;
+    border-radius: 8px;
+}
+
+#total {
+    color: green;
+    font-size: 28px;
+}
+
+footer {
+    background: #142d4e;
+    color: white;
+    padding: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>DRIVE EASY - CAR RENTAL SERVICE</h1>
+    <p>Book Your Favourite Car at Affordable Prices</p>
+</header>
+
+<div class="container">
+
+    <h2>Available Cars</h2>
+
+    <div class="cars">
+
+        <div class="car">
+            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500" alt="Sedan Car">
+            <h3>Hyundai Verna</h3>
+            <p>Rs. 2000 / Day</p>
+        </div>
+
+        <div class="car">
+            <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=500" alt="SUV Car">
+            <h3>Toyota Fortuner</h3>
+            <p>Rs. 4000 / Day</p>
+        </div>
+
+        <div class="car">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500" alt="Luxury Car">
+            <h3>Porsche</h3>
+            <p>Rs. 6000 / Day</p>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <h2>Car Booking Form</h2>
+
+    <p>Select Your Car</p>
+
+    <select id="carName">
+        <option value="">-- Select Car --</option>
+        <option value="2000">Hyundai Verna - Rs.2000/day</option>
+        <option value="4000">Toyota Fortuner - Rs.4000/day</option>
+        <option value="6000">Porsche - Rs.6000/day</option>
+    </select>
+
+    <p>Customer Name</p>
+    <input type="text" id="customer" placeholder="Enter Your Name">
+
+    <p>Number of Rental Days</p>
+    <input type="number" id="days" placeholder="Enter Days" min="1">
+
+    <br>
+
+    <button id="book">Book Now</button>
+    <button id="reset">Reset</button>
+
+    <hr>
+
+    <h2>Rental Bill</h2>
+
+    <div id="bill">
+        <h3>Booking Details</h3>
+        <div id="details">
+            <p>No Booking Yet</p>
+        </div>
+        <h2 id="total">Total Price: Rs. 0</h2>
+    </div>
+
+</div>
+
+<footer>
+    <p>DRIVE EASY | Car Rental Service</p>
+    <p>Contact: driveeasy@gmail.com</p>
+</footer>
+
+<script>
+
+$(document).ready(function() {
+
+    // CAR BOOKING
+
+    $("#book").click(function() {
+
+        var name = $("#customer").val();
+        var price = parseInt($("#carName").val());
+        var car = $("#carName option:selected").text();
+        var days = parseInt($("#days").val());
+
+        if(name == "" || isNaN(price) || isNaN(days) || days <= 0) {
+            alert("Please enter all booking details correctly.");
+            return;
+        }
+
+        var total = price * days;
+
+        $("#details").html(
+            "<p>Customer Name: " + name + "</p>" +
+            "<p>Selected Car: " + car + "</p>" +
+            "<p>Rental Days: " + days + "</p>" +
+            "<p>Price Per Day: Rs. " + price + "</p>"
+        );
+
+        $("#total").text("Total Price: Rs. " + total);
+
+        $("#bill").css("background-color", "#d5f5e3");
+
+        alert("Car Booking Successful!");
+    });
+
+
+    // RESET BOOKING
+
+    $("#reset").click(function() {
+
+        $("#customer").val("");
+        $("#carName").val("");
+        $("#days").val("");
+
+        $("#details").html("<p>No Booking Yet</p>");
+
+        $("#total").text("Total Price: Rs. 0");
+
+        $("#bill").css("background-color", "#eaf2f8");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
