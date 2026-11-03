@@ -1,0 +1,743 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Car Rental Service</title>
+
+<style>
+
+/* GENERAL STYLING */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HEADER */
+
+header {
+    background-color: #14213d;
+    color: white;
+    padding: 15px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #fca311;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #fca311;
+}
+
+/* HERO SECTION */
+
+.hero {
+    height: 550px;
+    background:
+    linear-gradient(rgba(0,0,0,0.55),
+    rgba(0,0,0,0.55)),
+    url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #fca311;
+    color: #14213d;
+    padding: 13px 28px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: white;
+    transform: scale(1.05);
+}
+
+/* GENERAL SECTION */
+
+section {
+    padding: 70px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 35px;
+    color: #14213d;
+    margin-bottom: 20px;
+}
+
+.section-text {
+    text-align: center;
+    max-width: 850px;
+    margin: auto;
+    font-size: 17px;
+}
+
+/* ABOUT SECTION */
+
+.about {
+    background-color: white;
+}
+
+.about-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.about-container img {
+    width: 50%;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h3 {
+    color: #fca311;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.about-content p {
+    margin-bottom: 15px;
+}
+
+/* CARS SECTION */
+
+.cars {
+    background-color: #e9ecef;
+}
+
+.car-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.car-card {
+    width: 260px;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    transition: 0.4s;
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+}
+
+.car-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.car-card h3 {
+    color: #14213d;
+    padding: 15px 15px 5px;
+}
+
+.car-card p {
+    padding: 5px 15px;
+}
+
+.car-card .price {
+    color: #e58b00;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+/* SERVICES SECTION */
+
+.services {
+    background-color: white;
+}
+
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.service-box {
+    background-color: #14213d;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.service-box:hover {
+    background-color: #fca311;
+    color: #14213d;
+    transform: scale(1.03);
+}
+
+.service-box h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+/* FACTS SECTION */
+
+.facts {
+    background:
+    linear-gradient(rgba(20,33,61,0.9),
+    rgba(20,33,61,0.9)),
+    url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+.facts h2 {
+    color: white;
+}
+
+.facts-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.fact-box h3 {
+    font-size: 45px;
+    color: #fca311;
+}
+
+.fact-box p {
+    font-size: 17px;
+}
+
+/* BOOKING SECTION */
+
+.booking {
+    background-color: #e9ecef;
+}
+
+form {
+    max-width: 600px;
+    margin: 35px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #fca311;
+}
+
+button {
+    width: 100%;
+    background-color: #14213d;
+    color: white;
+    padding: 13px;
+    border: none;
+    border-radius: 25px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #fca311;
+    color: #14213d;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #14213d;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media(max-width: 900px) {
+
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-container img {
+        width: 100%;
+    }
+
+    .service-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 5px 10px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    section {
+        padding: 50px 5%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        DriveEasy
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#cars">Cars</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#booking">Booking</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<!-- HOME SECTION -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>Drive Your Dreams With Us</h1>
+
+        <p>
+            Explore the city and travel anywhere
+            with our affordable and comfortable
+            car rental services.
+        </p>
+
+        <a href="#cars" class="btn">
+            Explore Cars
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ABOUT SECTION -->
+
+<section class="about" id="about">
+
+    <h2 class="section-title">
+        About Our Car Rental Service
+    </h2>
+
+    <div class="about-container">
+
+        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=900&q=80"
+        alt="Luxury Car">
+
+        <div class="about-content">
+
+            <h3>Your Journey, Our Responsibility</h3>
+
+            <p>
+                DriveEasy is a car rental service
+                that provides comfortable, reliable
+                and affordable vehicles for customers.
+            </p>
+
+            <p>
+                We offer different types of cars for
+                family trips, business travel and
+                personal journeys. Our aim is to make
+                every journey safe and convenient.
+            </p>
+
+            <a href="#booking" class="btn">
+                Book Your Car
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CARS SECTION -->
+
+<section class="cars" id="cars">
+
+    <h2 class="section-title">
+        Our Featured Cars
+    </h2>
+
+    <p class="section-text">
+        Choose your favourite car from our
+        collection and enjoy your journey.
+    </p>
+
+    <div class="car-container">
+
+        <div class="car-card">
+
+            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80"
+            alt="Sedan Car">
+
+            <h3>Luxury Sedan</h3>
+
+            <p>Comfortable car for city travel.</p>
+
+            <p class="price">₹2500 / Day</p>
+
+        </div>
+
+        <div class="car-card">
+
+            <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=800&q=80"
+            alt="SUV Car">
+
+            <h3>Premium SUV</h3>
+
+            <p>Perfect for family trips.</p>
+
+            <p class="price">₹3500 / Day</p>
+
+        </div>
+
+        <div class="car-card">
+
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"
+            alt="Sports Car">
+
+            <h3>Sports Car</h3>
+
+            <p>Enjoy a stylish driving experience.</p>
+
+            <p class="price">₹5000 / Day</p>
+
+        </div>
+
+        <div class="car-card">
+
+            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80"
+            alt="Hatchback Car">
+
+            <h3>Hatchback</h3>
+
+            <p>Affordable car for daily travel.</p>
+
+            <p class="price">₹1500 / Day</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SERVICES SECTION -->
+
+<section class="services" id="services">
+
+    <h2 class="section-title">
+        Our Services
+    </h2>
+
+    <p class="section-text">
+        We provide reliable services to make
+        your travel experience better.
+    </p>
+
+    <div class="service-container">
+
+        <div class="service-box">
+
+            <h3>Affordable Rental</h3>
+
+            <p>
+                Get quality vehicles at reasonable
+                rental prices.
+            </p>
+
+        </div>
+
+        <div class="service-box">
+
+            <h3>24/7 Support</h3>
+
+            <p>
+                Customer support is available
+                to assist you during your journey.
+            </p>
+
+        </div>
+
+        <div class="service-box">
+
+            <h3>Easy Booking</h3>
+
+            <p>
+                Book your preferred vehicle
+                through our simple booking system.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FACTS SECTION -->
+
+<section class="facts">
+
+    <h2 class="section-title">
+        DriveEasy – Your Trusted Travel Partner
+    </h2>
+
+    <div class="facts-container">
+
+        <div class="fact-box">
+            <h3>100+</h3>
+            <p>Cars Available</p>
+        </div>
+
+        <div class="fact-box">
+            <h3>500+</h3>
+            <p>Happy Customers</p>
+        </div>
+
+        <div class="fact-box">
+            <h3>50+</h3>
+            <p>Locations</p>
+        </div>
+
+        <div class="fact-box">
+            <h3>24/7</h3>
+            <p>Customer Support</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BOOKING SECTION -->
+
+<section class="booking" id="booking">
+
+    <h2 class="section-title">
+        Book Your Car
+    </h2>
+
+    <p class="section-text">
+        Fill out the form below to reserve
+        your favourite car.
+    </p>
+
+    <form id="bookingForm">
+
+        <input type="text"
+        id="name"
+        placeholder="Enter your full name"
+        required>
+
+        <input type="email"
+        id="email"
+        placeholder="Enter your email address"
+        required>
+
+        <input type="tel"
+        id="phone"
+        placeholder="Enter your phone number"
+        pattern="[0-9]{10}"
+        required>
+
+        <select id="car" required>
+
+            <option value="">Select Your Car</option>
+
+            <option>Luxury Sedan</option>
+
+            <option>Premium SUV</option>
+
+            <option>Sports Car</option>
+
+            <option>Hatchback</option>
+
+        </select>
+
+        <label for="date">Pickup Date</label>
+
+        <input type="date"
+        id="date"
+        required>
+
+        <button type="submit">
+            Confirm Booking
+        </button>
+
+    </form>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>DriveEasy Car Rental Service</p>
+
+    <p>Drive Safe • Travel Smart • Enjoy More</p>
+
+    <p>© 2026 DriveEasy. All Rights Reserved.</p>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+document.getElementById("bookingForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let name =
+    document.getElementById("name").value;
+
+    let car =
+    document.getElementById("car").value;
+
+    let date =
+    document.getElementById("date").value;
+
+    alert(
+        "Thank you " + name +
+        "! Your booking request for " +
+        car + " on " + date +
+        " has been submitted successfully."
+    );
+
+    document.getElementById("bookingForm").reset();
+
+});
+
+</script>
+
+</body>
+</html>
