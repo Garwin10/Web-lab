@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html ng-app="carApp">
+<head>
+    <title>Car Rental Service</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f2f4f7;
+        }
+
+        header {
+            background-color: #1e293b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #334155;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: orange;
+        }
+
+        .content {
+            padding: 25px;
+            text-align: center;
+            min-height: 350px;
+        }
+
+        img {
+            width: 300px;
+            height: 190px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 8px;
+        }
+
+        form {
+            width: 320px;
+            margin: auto;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 9px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #ea580c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c2410c;
+        }
+
+        footer {
+            background-color: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Car Rental Service</h1>
+    <p>Your Journey, Our Responsibility</p>
+</header>
+
+<nav>
+    <a href="#!/">Home</a>
+    <a href="#!/about">About Us</a>
+    <a href="#!/cars">Available Cars</a>
+    <a href="#!/booking">Book a Car</a>
+</nav>
+
+<div ng-view class="content"></div>
+
+<footer>
+    <p>Car Rental Service | Drive Safe, Travel Easy</p>
+</footer>
+
+<script>
+    var app = angular.module("carApp", ["ngRoute"]);
+
+    app.config(function($routeProvider) {
+        $routeProvider
+        .when("/", {
+            templateUrl: "home.html"
+        })
+        .when("/about", {
+            templateUrl: "about.html"
+        })
+        .when("/cars", {
+            templateUrl: "cars.html"
+        })
+        .when("/booking", {
+            templateUrl: "booking.html",
+            controller: "BookingController"
+        })
+        .otherwise({
+            redirectTo: "/"
+        });
+    });
+
+    app.controller("BookingController", function($scope) {
+        $scope.bookCar = function() {
+            $scope.message =
+                "Thank you, " + $scope.name +
+                "! Your car booking request is successful.";
+        };
+    });
+</script>
+
+<!-- HOME PAGE -->
+<script type="text/ng-template" id="home.html">
+    <h2>Welcome to Car Rental Service</h2>
+
+    <p>
+        We provide affordable and comfortable cars
+        for your trips, business travel and family journeys.
+    </p>
+
+    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600">
+
+    <p>Choose your favourite car and enjoy your journey!</p>
+</script>
+
+<!-- ABOUT PAGE -->
+<script type="text/ng-template" id="about.html">
+    <h2>About Us</h2>
+
+    <p>
+        Our Car Rental Service provides reliable and
+        affordable vehicles for customers.
+    </p>
+
+    <p>
+        Our goal is to make travelling easy and comfortable
+        by offering different types of rental cars.
+    </p>
+
+    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600">
+</script>
+
+<!-- AVAILABLE CARS PAGE -->
+<script type="text/ng-template" id="cars.html">
+    <h2>Available Cars</h2>
+
+    <p>Choose from our available rental cars.</p>
+
+    <h3>BMW</h3>
+    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600">
+    <p>Luxury and comfortable car.</p>
+
+    <h3>Sports Car</h3>
+    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600">
+    <p>Perfect for an exciting journey.</p>
+
+    <h3>SUV</h3>
+    <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600">
+    <p>Spacious car suitable for family trips.</p>
+</script>
+
+<!-- BOOKING PAGE -->
+<script type="text/ng-template" id="booking.html">
+    <h2>Car Booking Form</h2>
+
+    <p>Enter your details to book a rental car.</p>
+
+    <form ng-submit="bookCar()">
+
+        <label>Name:</label>
+        <input type="text" ng-model="name" required>
+
+        <label>Email:</label>
+        <input type="email" ng-model="email" required>
+
+        <label>Mobile Number:</label>
+        <input type="tel" ng-model="mobile" required>
+
+        <label>Select Car:</label>
+        <select ng-model="car" required>
+            <option value="">Select Car</option>
+            <option>BMW</option>
+            <option>Sports Car</option>
+            <option>SUV</option>
+        </select>
+
+        <label>Pickup Date:</label>
+        <input type="date" ng-model="date" required>
+
+        <label>Location:</label>
+        <input type="text" ng-model="location" required>
+
+        <button type="submit">Book Now</button>
+
+    </form>
+
+    <h3>{{message}}</h3>
+</script>
+
+</body>
+</html>
