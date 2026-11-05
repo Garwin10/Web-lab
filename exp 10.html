@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveEasy Car Rental</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>DriveEasy Car Rental</h1>
+        <p>Your Journey, Our Cars. Rent Easy, Travel Happy!</p>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Find Your Perfect Ride</h2>
+            <p>
+                Choose your favourite car and book it easily.
+                Enjoy a comfortable and convenient travel experience
+                with DriveEasy Car Rental.
+            </p>
+        </section>
+
+        <section class="form-container">
+            <h2>Car Rental Booking Form</h2>
+
+            <form action="/server" method="POST">
+
+                <label>Customer Name:</label>
+                <input type="text" name="name"
+                       placeholder="Enter your full name" required>
+
+                <label>Email:</label>
+                <input type="email" name="email"
+                       placeholder="Enter your email" required>
+
+                <label>Phone Number:</label>
+                <input type="tel" name="phone"
+                       pattern="[0-9]{10}"
+                       placeholder="Enter 10-digit phone number" required>
+
+                <label>Age:</label>
+                <input type="number" name="age"
+                       min="18" max="100"
+                       placeholder="Enter your age" required>
+
+                <label>Driving Licence Number:</label>
+                <input type="text" name="license"
+                       placeholder="Enter your licence number" required>
+
+                <label>Select Car:</label>
+                <select name="car" required>
+                    <option value="">Choose a Car</option>
+                    <option value="Swift">Maruti Swift</option>
+                    <option value="Hyundai i20">Hyundai i20</option>
+                    <option value="Honda City">Honda City</option>
+                    <option value="Toyota Innova">Toyota Innova</option>
+                    <option value="Kia Seltos">Kia Seltos</option>
+                    <option value="Mahindra Thar">Mahindra Thar</option>
+                </select>
+
+                <label>Pickup Location:</label>
+                <input type="text" name="pickup"
+                       placeholder="Enter pickup location" required>
+
+                <label>Pickup Date:</label>
+                <input type="date" name="pickupDate" required>
+
+                <label>Return Date:</label>
+                <input type="date" name="returnDate" required>
+
+                <label>Transmission Type:</label>
+                <select name="transmission" required>
+                    <option value="">Select Transmission</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select>
+
+                <button type="submit">Book Your Car</button>
+
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 DriveEasy Car Rental</p>
+        <p>Drive Safe, Travel Far!</p>
+    </footer>
+
+</body>
+</html>
